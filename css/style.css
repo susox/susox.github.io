@@ -1,0 +1,290 @@
+@import 'https://fonts.googleapis.com/css?family=Open+Sans|Pacifico';
+
+body, html, .container, #main{
+	height: 100%; 
+	font-size: 100%; 
+	padding: 0; 
+	margin: 0;
+}
+
+/* The Box Model - http://www.w3schools.com/cssref/css3_pr_box-sizing.asp */
+html{
+	box-sizing: border-box;
+}
+
+*, *:before, *:after{
+	box-sizing: inherit;
+}
+
+/* Clearfix hack - http://nicolasgallagher.com/micro-clearfix-hack */
+.clearfix:before, .clearfix:after{
+	content: " ";
+	display: table;
+}
+
+.clearfix:after{
+	clear: both;
+}
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	color: #2ecc71;
+}
+
+a{
+	text-decoration: none;
+}
+
+.container{
+	position: relative;
+	overflow: hidden;
+	background: #fff;
+}
+
+.wrapper{
+	position: relative;
+	height: 100%;
+	left: 0px;
+}
+
+.pushed{
+	left: 200px;
+}
+
+.wrapper, .pushed, .nav-menu, .pin{
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.nav-menu{
+	background: #2ecc71;
+	z-index: 999;
+	position:fixed;
+	top: 0;
+}
+
+.nav-menu li{
+	list-style: none;
+	border-top: 1px solid #27ae60;
+}
+
+.nav-menu ul li > a{
+	display: block;
+	padding: 0.7em 1em 0.7em 1em;
+	outline: none;
+	color: #fff;
+	font-weight: 300;
+	padding: 1em;
+	cursor: pointer;
+}
+
+.nav-menu ul li a:hover{
+	background: #27ae60;
+}
+
+.nav-menu ul li a:active{
+	background: #6ee4a0;
+	color: #27ae60;
+}
+
+#search-bar{
+	text-align:center;
+}
+
+#search-bar input{
+    width: 100%;
+    padding: 5px;
+    border: none;
+    outline: none;
+}
+
+#main{
+	overflow-y: auto;
+	position: relative;
+}
+
+#main  header{
+	width: 90%;
+	margin: 0 auto;
+	margin-bottom: 30px;
+}
+
+#main header h1{
+	font-family: 'Pacifico', cursive;
+	font-weight: 400;
+	text-align: center;
+	font-size: 50px;
+	margin: 0 0 15px 0;
+}
+
+#main header p{
+	margin: 0;
+}
+
+#hamburger{
+	outline: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	display: none;
+}
+
+.hamburger-inner{
+	background-color: #2ecc71 !important;
+}
+
+.hamburger-inner:after, .hamburger-inner:before{
+	background-color: #6ee4a0 !important;
+}
+
+.pin{
+	background: #2ecc71;
+	width: 0px; /* Just for transition purposes :: task 2 (JS) */
+}
+
+@media screen and (min-width: 45.0625em){
+
+	/************************************************************
+	**   	 		   START : Flexbox (searchbar) 	  		   **
+	** Flexbox properties - http://codepen.io/justd/pen/yydezN **
+	*************************************************************/
+	
+	.nav-menu{
+		display: -webkit-flex;
+		display: flex;
+		/* Better load effect that width 100% (one-by-one) */
+		right: 0;
+		left: 0;
+	}
+
+	#search-bar{
+		margin: 11px 10px;
+		-webkit-flex-grow: 2;
+		flex-grow: 2;
+	}
+
+	/************************************************************
+	**   	 		   END : Flexbox (searchbar) 	  		   **
+	*************************************************************/
+
+	.nav-menu ul{
+		background: #2ecc71;
+	}
+
+	.nav-menu li{
+		position: relative;
+	}
+
+	.nav-menu ul, .nav-menu li {
+		display: inline-block;
+		padding: 0;
+		margin: 0;
+	}
+
+	.nav-menu li li{
+		width: 100%;
+	}
+
+	.nav-menu > ul > li{
+		border-top: none;
+	}
+
+	/********************************************
+	**   	    START : Fade in & out 	 	   **
+	*********************************************/
+
+	.nav-menu ul ul{
+		position: absolute;
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	.nav-menu ul > li:hover ul{
+		opacity: 1;
+		visibility: visible;
+
+		-webkit-transition: all 0.5s;
+		-moz-transition: all 0.5s;
+		-o-transition: all 0.5s;
+		transition: all 0.5s;
+	}
+
+	/********************************************
+	**   	    END : Fade in & out 	       **
+	*********************************************/
+
+	#main{
+		padding-top: 60px;
+	}
+
+	/* 2 column layout for description area */
+	#main header p{
+		webkit-columns: 2;
+		-moz-columns: 2;
+		columns: 2;
+	}
+}
+
+@media screen and (max-width: 45em){
+
+	#hamburger{
+		display: block;
+	}
+
+	.nav-menu{
+		position: absolute;
+		top: 0;
+		width: 200px;
+		height: 100%;
+		left: -200px;
+		overflow:auto;
+	}
+
+	.nav-menu ul{
+		margin: 0;
+		padding: 0;
+	}
+
+	.nav-menu > ul > li:first-child{
+		border-top: none;
+	}
+
+	/* 2nd level submenus */
+	.nav-menu li ul a{
+		padding: 1em 1em 1em 2em;
+	}
+
+	/********************************************
+	**         START : Slide down & up         **
+	*********************************************/
+
+	.slide-up{
+		max-height: 0;
+	}
+
+	.slide-down{
+		/* Without JS to know the exact ul height
+		a static max-height is used. 3 Link elements
+		of 55px each (only CSS). Could be more for 
+		safety reasons ;) */
+		max-height: 165px;
+	}
+
+	.nav-menu ul ul{
+		overflow: hidden;
+	}
+
+	/********************************************
+	**         END : Slide down & up	       **
+	*********************************************/
+
+	#search-bar{
+		margin: 10px;
+	}
+
+	#search-bar input {
+		height: 40px;
+		border: none;
+		-webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+}

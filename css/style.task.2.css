@@ -1,0 +1,18 @@
+/********************************************
+**	Pinterst layout (multi-column jQuery)  **
+*********************************************/
+
+#main header{
+	margin-bottom: 10px;
+}
+
+#board {
+	position: absolute;
+	width: 90%;
+	margin: 0 5%;
+}
+
+.pin{
+	position: absolute;
+	width: 0px;
+}
