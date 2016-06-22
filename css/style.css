@@ -219,7 +219,7 @@ a{
 
 	/* 2 column layout for description area */
 	#main header p{
-		webkit-columns: 2;
+		-webkit-columns: 2;
 		-moz-columns: 2;
 		columns: 2;
 	}
