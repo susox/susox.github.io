@@ -105,7 +105,7 @@ window.onload = function(){
 	**   END : Slide down-up for mobile menu   **
 	*********************************************/
 
-	// Well just adding pins with random heights
+	// Well just adding pins with random heights :P
 	addRandomPins(board);
 
 };
@@ -117,13 +117,19 @@ window.onload = function(){
 
 function addRandomPins(board){
 	var i = 0,
-		height = 0;
+		height = 0
+		blue = "#6191B0",
+		green = "#86B73D",
+		color = 0;
 	
 	for(i = 0; i < 50; i++){
 		var pin = document.createElement("div");
 		pin.className = "pin";
 		height = Math.floor((Math.random() * 100) + 50);
 		pin.style.height = height+"px";
+		color = Math.round(Math.random());
+		color = (color > 0) ? "#6191B0" : "#86B73D";
+		pin.style.background = color;
 		board.appendChild(pin);
 	}
 }

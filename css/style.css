@@ -1,5 +1,16 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans|Pacifico';
 
+/*******
+background: #FAFAFA;
+base: #5A626A;
+hover+border: #483E4D; 
+active: #727980;
+font: #FFFFFF
+
+blue: #6191B0; 
+gree: #86B73D;
+*******/
+
 body, html, .container, #main{
 	height: 100%; 
 	font-size: 100%; 
@@ -28,7 +39,7 @@ html{
 
 body{
 	font-family: 'Open Sans', sans-serif;
-	color: #2ecc71;
+	color: #5A626A;
 }
 
 a{
@@ -38,7 +49,7 @@ a{
 .container{
 	position: relative;
 	overflow: hidden;
-	background: #fff;
+	background: #FAFAFA;
 }
 
 .wrapper{
@@ -59,7 +70,7 @@ a{
 }
 
 .nav-menu{
-	background: #2ecc71;
+	background: #5A626A;
 	z-index: 999;
 	position:fixed;
 	top: 0;
@@ -67,7 +78,7 @@ a{
 
 .nav-menu li{
 	list-style: none;
-	border-top: 1px solid #27ae60;
+	border-top: 1px solid #483E4D;
 }
 
 .nav-menu ul li > a{
@@ -81,12 +92,11 @@ a{
 }
 
 .nav-menu ul li a:hover{
-	background: #27ae60;
+	background: #483E4D;
 }
 
 .nav-menu ul li a:active{
-	background: #6ee4a0;
-	color: #27ae60;
+	background: #727980;
 }
 
 #search-bar{
@@ -130,15 +140,15 @@ a{
 }
 
 .hamburger-inner{
-	background-color: #2ecc71 !important;
+	background-color: #5A626A !important;
 }
 
 .hamburger-inner:after, .hamburger-inner:before{
-	background-color: #6ee4a0 !important;
+	background-color: #DDC49F !important;
 }
 
 .pin{
-	background: #2ecc71;
+	/*background: #5A626A;*/
 	width: 0px; /* Just for transition purposes :: task 2 (JS) */
 }
 
@@ -168,7 +178,7 @@ a{
 	*************************************************************/
 
 	.nav-menu ul{
-		background: #2ecc71;
+		background: #5A626A;
 	}
 
 	.nav-menu li{
