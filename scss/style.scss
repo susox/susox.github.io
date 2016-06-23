@@ -1,0 +1,319 @@
+@import "https://fonts.googleapis.com/css?family=Open+Sans|Pacifico";
+
+$white: #FFFFFF;
+$alabaster: #FAFAFA;
+$shuttle-gray: #5A626A;
+$mortar: #483E4D;
+$rolling-stone: #727980;
+$hippie-blue: #6191B0;
+$sushi: #86B73D;
+
+body, html, .container, #main{
+	height: 100%;
+	font-size: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+/* The Box Model - http://www.w3schools.com/cssref/css3_pr_box-sizing.asp */
+
+html{
+	box-sizing: border-box;
+}
+
+*{
+	box-sizing: inherit;
+
+	&:before, &:after{
+		box-sizing: inherit;
+	}
+}
+
+/* Clearfix hack - http://nicolasgallagher.com/micro-clearfix-hack */
+
+.clearfix{
+	&:before{
+		content: " ";
+		display: table;
+	}
+
+	&:after{
+		content: " ";
+		display: table;
+		clear: both;
+	}
+}
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	color: $shuttle-gray;
+}
+
+a{
+	text-decoration: none;
+}
+
+.container{
+	position: relative;
+	overflow: hidden;
+	background: $alabaster;
+}
+
+.wrapper{
+	position: relative;
+	height: 100%;
+	left: 0px;
+}
+
+.pushed{
+	left: 200px;
+}
+
+.wrapper, .pushed, .nav-menu, .pin{
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	-o-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.nav-menu{
+	background: $shuttle-gray;
+	z-index: 999;
+	position: fixed;
+	top: 0;
+
+	li{
+		list-style: none;
+		border-top: 1px solid $mortar;
+	}
+
+	ul li{
+
+		> a{
+			display: block;
+			padding: 0.7em 1em 0.7em 1em;
+			outline: none;
+			color: $white;
+			font-weight: 300;
+			padding: 1em;
+			cursor: pointer;
+		}
+
+		a{
+			&:hover{
+				background: $mortar;
+			}
+
+			&:active{
+				background: $rolling-stone;
+			}
+		}
+	}
+}
+
+#search-bar{
+	text-align: center;
+
+	input{
+		width: 100%;
+		padding: 5px;
+		border: none;
+		outline: none;
+	}
+}
+
+#main{
+	overflow-y: auto;
+	position: relative;
+
+	header{
+		width: 90%;
+		margin: 0 auto;
+		margin-bottom: 30px;
+
+		h1{
+			font-family: 'Pacifico', cursive;
+			font-weight: 400;
+			text-align: center;
+			font-size: 50px;
+			margin: 0 0 15px 0;
+		}
+
+		p{
+			margin: 0;
+		}
+	}
+}
+
+#hamburger{
+	outline: none;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	display: none;
+}
+
+.hamburger-inner{
+	background-color: $mortar !important;
+	&:after, &:before{
+		background-color: $shuttle-gray !important;
+	}
+}
+
+.pin{	
+	/* Just for transition purposes :: task 2 (JS) */
+	width: 0px;
+}
+
+@media screen and (min-width: 45.0625em){
+
+	/************************************************************
+	**	 	 			 START : Flexbox (searchbar) 		   **
+	** Flexbox properties - http://codepen.io/justd/pen/yydezN **
+	*************************************************************/
+
+	.nav-menu{
+		display: -webkit-flex;
+		display: flex;
+		/* Better load effect that width 100% (one-by-one) */
+		right: 0;
+		left: 0;
+	}
+	#search-bar{
+		margin: 11px 10px;
+		-webkit-flex-grow: 2;
+		flex-grow: 2;
+	}
+
+	/************************************************************
+	**	 	 			 END : Flexbox (searchbar) 			   **
+	*************************************************************/
+
+	.nav-menu{
+		ul{
+			background: $shuttle-gray;
+		}
+
+		li{
+			position: relative;
+		}
+
+		ul{
+			display: inline-block;
+			padding: 0;
+			margin: 0;
+		}
+
+		li{
+			display: inline-block;
+			padding: 0;
+			margin: 0;
+			li{
+				width: 100%;
+			}
+		}
+
+		> ul > li{
+			border-top: none;
+		}
+
+		ul{
+			/********************************************
+			**	 			START : Fade in & out 	   **
+			*********************************************/
+
+			ul{
+				position: absolute;
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			> li:hover ul{
+				opacity: 1;
+				visibility: visible;
+				-webkit-transition: all 0.5s;
+				-moz-transition: all 0.5s;
+				-o-transition: all 0.5s;
+				transition: all 0.5s;
+			}
+
+			/********************************************
+			**	 			END : Fade in & out 	   **
+			*********************************************/
+		}
+	}
+	
+	#main{
+		padding-top: 60px;
+		/* 2 column layout for description area */
+		header p{
+			-webkit-columns: 2;
+			-moz-columns: 2;
+			columns: 2;
+		}
+	}
+	
+}
+
+@media screen and (max-width: 45em){
+	#hamburger{
+		display: block;
+	}
+	.nav-menu{
+		position: absolute;
+		top: 0;
+		width: 200px;
+		height: 100%;
+		left: -200px;
+		overflow: auto;
+
+		ul{
+			margin: 0;
+			padding: 0;
+		}
+
+		> ul > li:first-child{
+			border-top: none;
+		}
+
+		/* 2nd level submenus mobile */
+		li ul a{
+			padding: 1em 1em 1em 2em;
+		}
+	}
+	
+	/********************************************
+	**			START : Slide down & up	       **
+	*********************************************/
+
+	.slide-up{
+		max-height: 0;
+	}
+
+	.slide-down{
+		/* Without JS to know the exact ul height
+		a static max-height is used. 3 Link elements
+		of 55px each (only CSS). Could be more for 
+		safety reasons ;) */
+		max-height: 165px;
+	}
+
+	.nav-menu ul ul{
+		overflow: hidden;
+		-webkit-transition: all 0.5s;
+		-moz-transition: all 0.5s;
+		-o-transition: all 0.5s;
+		transition: all 0.5s;
+	}
+
+	/********************************************
+	**			 END : Slide down & up		   **
+	*********************************************/
+
+	#search-bar{
+		margin: 10px;
+		input{
+			height: 40px;
+			border: none;
+			-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		}
+	}
+}
