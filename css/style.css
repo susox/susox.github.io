@@ -2,8 +2,8 @@
 
 /*******
 background: #FAFAFA;
-base: #5A626A;
-hover+border: #483E4D; 
+base+hamburger1: #5A626A;
+hover+border+hamburger2: #483E4D; 
 active: #727980;
 font: #FFFFFF
 
@@ -140,11 +140,11 @@ a{
 }
 
 .hamburger-inner{
-	background-color: #5A626A !important;
+	background-color: #483E4D !important;
 }
 
 .hamburger-inner:after, .hamburger-inner:before{
-	background-color: #DDC49F !important;
+	background-color: #5A626A !important;
 }
 
 .pin{
